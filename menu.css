@@ -1,0 +1,29 @@
+@keyframes title{
+    0%{
+        color: rgb(255, 0, 119);
+    }
+    50%{
+        color: purple;
+    }
+    100%{
+        color: rgb(255, 0, 119);
+    }
+}
+
+.tool{
+    display: inline;
+    width: 150px;
+    font-size: 30px;
+    height: 100px;
+}
+#title{
+    animation: title 3s ease 0s infinite;
+    font-size: 100px;
+    width: 1000px;
+    height: 150px;
+    border-radius: 25px;
+    border: dotted 5px;
+}
+#worker{
+    font-size: 30px;
+}

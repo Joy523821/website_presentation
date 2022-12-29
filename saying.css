@@ -1,0 +1,41 @@
+.border{
+    width : 100px;
+    height : 50px;
+    border : solid 1px;
+    border-radius : 10px;
+    text-align : center;
+    margin : 10px;
+    transition : 0.3s;
+  }
+  
+  #blue:hover{
+    background-color:blue;
+    color:white;
+  }
+  #green:hover{
+    background-color:green;
+    color:white;
+  }
+  #red:hover{
+    background-color:red;
+    color:white;
+  }
+  #haha:hover{
+    background-color:black;
+    color:white;
+  }
+  #restore:hover{
+    background-color:purple;
+    color:white;
+  }
+  #send:hover{
+    background-color:black;
+    color:white;
+  }
+  .click{
+    text-align : center;
+    margin : 10px;
+    display : inline;
+  }
+  
+  #headline{ transition : 0.5s;} /*所有屬性改變都適用*/ 
