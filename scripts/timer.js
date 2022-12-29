@@ -4,7 +4,7 @@ $(document).ready(function(){
 
     alert("Welcome to Timer!");
     $(".send").click(function(){
-      if($(".input").val() >= 0){
+      if(($(".input").val() >= 0) && (time == 0)){
         time = $(".input").val();
         $(".time_left").html($(".input").val());
         
