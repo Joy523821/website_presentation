@@ -24,7 +24,7 @@ $(document).ready(function(){
         }
     });
     $("#headline").hover(function(){
-        $("#headline").css("font-size", "50px");
+        $("#headline").css("font-size", "200px");
     }, function(){
         $("#headline").css("font-size", "");
     });

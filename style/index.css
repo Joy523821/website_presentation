@@ -12,18 +12,33 @@
 
 .tool{
     display: inline;
+    margin: auto;
     width: 150px;
     font-size: 30px;
     height: 100px;
+    
 }
+
+.first{
+    margin-left: 33%;
+}
+
 #title{
     animation: title 3s ease 0s infinite;
     font-size: 100px;
-    width: 1000px;
+    width: 950px;
     height: 150px;
     border-radius: 25px;
     border: dotted 5px;
+    margin: auto;
 }
 #worker{
     font-size: 30px;
+    height: 50px;
+    margin-left: 20%;
+    
+}
+.img{
+    display: block;
+    margin: auto;
 }

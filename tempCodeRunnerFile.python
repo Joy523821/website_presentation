@@ -1,0 +1,110 @@
+#if m=4 n=5
+# a b c d e 'X'
+#1
+#2
+#3
+#4
+#'Y' (包一圈0)
+
+def ind(char): #a=1,b=2..  
+    return ord(char)-ord("a")+1#1-base 
+
+m,n = map(int,input().split())
+board = [[0]*(m+2) for i in range(n+2)] #list[x=n][y=m]
+#none=0 white=1 black=-1
+turn = -1 #黑先
+
+def islegal(turn,x,y): #x, y =要下的點 
+    xf = x #尋找用
+    yf = y
+    for i in [[1,-1],[1,0],[1,1],[0,-1],[0,1],[-1,-1],[-1,0],[-1,1]]:
+        xf +=i[0]
+        yf +=i[1]
+
+        if board[xf][yf] != turn*-1:
+            xf = x #reset
+            yf = y
+            continue
+        while True:
+            xf +=i[0]
+            yf +=i[1]
+            if board[xf][yf] == turn*-1: #可以翻的
+                continue
+            if board[xf][yf] == turn: #同色
+                return True
+            if board[xf][yf] == 0: #斷
+                break
+        xf = x #reset
+        yf = y
+    return False #都跑完還是不行就你的鍋
+
+def check(turn,x,y): #x, y =要下的點
+    xf = x #尋找用
+    yf = y
+    for i in [[1,-1],[1,0],[1,1],[0,-1],[0,1],[-1,-1],[-1,0],[-1,1]]: #八方
+        xf +=i[0]
+        yf +=i[1]
+
+        print("8way: ",xf,yf)#############################
+
+        if board[xf][yf] != turn*-1:
+            xf = x #reset
+            yf = y
+            continue
+        while True: #一向檢查
+            xf +=i[0]
+            yf +=i[1]
+            print("xf,yf= ",xf,yf)####################################
+            if board[xf][yf] == turn*-1: #可以翻的
+                continue
+            if board[xf][yf] == 0: #沒料
+                print("xf,yf= ",xf,yf)####################################
+                break#換下一方向
+            if board[xf][yf] == turn: #同色 
+                while xf != x or yf != y:
+                    xf -= i[0]
+                    yf -= i[1]
+                    board[xf][yf] = turn #翻旗子
+                    print(board)##############################
+                break#換下一方向
+          
+        xf = x #reset
+        yf = y
+    return
+
+
+
+for i in range(4): #setup 4times
+    temp = input() #"XY"
+    board[ind(temp[0])][int(temp[1])] = turn #1-base所以減一
+    turn *= -1 
+
+legal = 1 #還合法嗎
+for i in range(n*m - 4): #開始
+    temp = input() #"XY"
+    board[ind(temp[0])][int(temp[1])] = turn #1-base所以減一
+    if islegal(turn, ind(temp[0]), int(temp[1])):
+        print(board)##############################
+        
+        check(turn, ind(temp[0]), int(temp[1]))
+
+    else:
+        
+        legal = 0
+        
+    turn *= -1 
+
+
+if legal == 1:
+    sum =0
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            sum += board[j][i]
+    if sum > 0: #white wins
+        print("white")
+    elif sum < 0: #black wins
+        print("black")
+    else: #tie
+        print("draw")
+if legal ==0:
+    print("illegal") ###########################################季的改面
